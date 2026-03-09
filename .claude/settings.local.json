@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "WebFetch(domain:www.unevieextraordinaire.com)",
+      "Bash(npx pnpm run build)",
+      "WebFetch(domain:www.pappers.fr)",
+      "WebFetch(domain:www.societe.com)",
+      "Bash(gh auth status)",
+      "Bash(ls -la /Users/jihane/tesvaleurs/next.config*)",
+      "Bash(git config --global user.name)",
+      "Bash(brew install gh)",
+      "Bash(npm install -g vercel)",
+      "Bash(sudo chown -R 501:20 \"/Users/jihane/.npm\")",
+      "Bash(npx vercel --version)",
+      "Bash(pnpm add -g vercel)",
+      "Bash(npx pnpm add -g vercel)",
+      "Bash(npx pnpm setup)",
+      "Bash(export PNPM_HOME=\"$HOME/Library/pnpm\")",
+      "Bash(export PATH=\"$PNPM_HOME:$PATH\")",
+      "Bash(vercel --version)",
+      "Bash(gh --version)",
+      "Bash(git config --global user.name \"Jihane\")",
+      "Bash(git config --global user.email \"jihane@herizi.com\")",
+      "Bash(git init)",
+      "Bash(git add .)"
+    ]
+  }
+}

@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  --color-terracotta: #F26522;
+  --color-terracotta-light: #FF8F5C;
+  --color-terracotta-dark: #D94F00;
+  --color-sable: #F1F0FB;
+  --color-sable-light: #F8F7FF;
+  --color-sage: #7C3AED;
+  --color-sage-light: #A78BFA;
+  --color-brun: #1E293B;
+  --color-brun-light: #475569;
+  --color-creme: #FAFAFE;
+  --color-brun-profond: #0F0D2E;
+  --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--color-creme);
+  color: var(--color-brun);
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+}
+
+::selection {
+  background-color: var(--color-terracotta);
+  color: white;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-sable-light);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-terracotta-light);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-terracotta);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Textarea and input focus */
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid var(--color-terracotta);
+  outline-offset: 2px;
+}
+
+/* === Modern 2026 animations & effects === */
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes orbit {
+  0% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -20px) scale(1.05); }
+  50% { transform: translate(-10px, 20px) scale(0.95); }
+  75% { transform: translate(-30px, -10px) scale(1.02); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out both;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+.animate-orbit {
+  animation: orbit 20s ease-in-out infinite;
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+  background: rgba(15, 13, 46, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Gradient text — orange to violet */
+.text-gradient {
+  background: linear-gradient(135deg, #F26522, #7C3AED);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hover lift */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(124, 58, 237, 0.12), 0 4px 16px rgba(242, 101, 34, 0.08);
+}
+
+/* Premium glow — dual orange + violet */
+.glow-terracotta {
+  box-shadow: 0 0 40px rgba(242, 101, 34, 0.15), 0 0 80px rgba(124, 58, 237, 0.1);
+}
+
+/* Animated gradient border */
+.gradient-border {
+  position: relative;
+  background: white;
+  border-radius: 1rem;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 1.1rem;
+  background: linear-gradient(135deg, #F26522, #7C3AED, #FF8F5C);
+  z-index: -1;
+  background-size: 200% 200%;
+  animation: shimmer 4s linear infinite;
+}
+
+/* Noise texture overlay */
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Mesh gradient background */
+.mesh-gradient {
+  background:
+    radial-gradient(at 20% 20%, rgba(242, 101, 34, 0.08) 0%, transparent 50%),
+    radial-gradient(at 80% 80%, rgba(124, 58, 237, 0.06) 0%, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(241, 240, 251, 0.5) 0%, transparent 70%);
+}
+
+/* CTA button — noir */
+.btn-gradient {
+  background: #0F0D2E;
+  color: white;
+  transition: all 0.3s ease;
+}
+.btn-gradient:hover {
+  box-shadow: 0 8px 32px rgba(15, 13, 46, 0.35);
+  transform: translateY(-2px);
+  background: #1E293B;
+}
+
+/* CTA button orange — terracotta vibrant */
+.btn-orange {
+  background: linear-gradient(135deg, #F26522, #D94F00);
+  color: white;
+  transition: all 0.3s ease;
+}
+.btn-orange:hover {
+  box-shadow: 0 8px 32px rgba(242, 101, 34, 0.35);
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #FF8F5C, #F26522);
+}
+
+/* CTA button premium — blanc (pour fonds sombres) */
+.btn-gradient-premium {
+  background: white;
+  color: #0F0D2E;
+  transition: all 0.3s ease;
+}
+.btn-gradient-premium:hover {
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  background: #F1F0FB;
+}
