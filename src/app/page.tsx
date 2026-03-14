@@ -1,68 +1,40 @@
-import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { MOCK_HIERARCHIE } from "@/lib/mock-data";
-import { COLORS } from "@/components/DonutChart";
+import EmailCaptureForm from "@/components/EmailCaptureForm";
 
 export default function Home() {
   return (
     <>
       <Header />
 
-      {/* Hero — full bleed with decorative orbs */}
+      {/* BLOC 1 — Hero + Formulaire de capture */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-        {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-creme via-sable-light to-creme mesh-gradient" />
-        {/* Decorative orbs */}
         <div className="absolute top-20 left-[10%] w-72 h-72 bg-terracotta/8 rounded-full blur-3xl animate-pulse-soft" />
         <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-sage/8 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "1.5s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-terracotta/5 rounded-full blur-3xl" />
 
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
-          <div className="animate-fade-up">
-            <p className="inline-block text-xs font-semibold tracking-widest uppercase text-terracotta bg-terracotta/10 px-4 py-1.5 rounded-full mb-8">
-              Questionnaire gratuit &middot; 20 min &middot; R&eacute;sultats imm&eacute;diats
-            </p>
-          </div>
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
+          <p className="animate-fade-up inline-block text-xs font-semibold tracking-widest uppercase text-terracotta bg-terracotta/10 px-4 py-1.5 rounded-full mb-8">
+            55 questions &middot; Un prompt IA &middot; 30 minutes
+          </p>
 
-          <h1 className="animate-fade-up font-serif text-6xl sm:text-7xl md:text-8xl font-bold text-brun leading-[1.1] mb-8" style={{ animationDelay: "0.1s" }}>
-            D&eacute;couvre tes valeurs<br />
-            <span className="text-gradient">r&eacute;elles</span>
+          <h1 className="animate-fade-up font-serif text-5xl sm:text-6xl md:text-7xl font-bold text-brun leading-[1.1] mb-6" style={{ animationDelay: "0.1s" }}>
+            Identifie tes valeurs{" "}
+            <span className="text-gradient">hautes</span>
           </h1>
 
-          <p className="animate-fade-up text-lg sm:text-xl text-brun/60 max-w-xl mx-auto mb-12 leading-relaxed" style={{ animationDelay: "0.2s" }}>
-            Pas celles que tu crois. Celles qui guident vraiment tes choix,
-            tes blocages et tes d&eacute;cisions.
+          <p className="animate-fade-up text-lg sm:text-xl text-brun/60 max-w-xl mx-auto mb-10 leading-relaxed" style={{ animationDelay: "0.2s" }}>
+            Pour voir ce qui organise vraiment ta vie &mdash;
+            pas ce que tu aimerais, ce que tu fais d&eacute;j&agrave;.
           </p>
 
           <div className="animate-fade-up" style={{ animationDelay: "0.3s" }}>
-            <Link
-              href="/questionnaire"
-              className="inline-block btn-orange px-10 py-5 rounded-full text-lg font-semibold"
-            >
-              Commencer le questionnaire
-            </Link>
-          </div>
-
-          {/* Trust row */}
-          <div className="animate-fade-up mt-16 flex flex-wrap justify-center gap-6 sm:gap-10" style={{ animationDelay: "0.4s" }}>
-            {[
-              { label: "57 questions", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
-              { label: "Donn\u00e9es s\u00e9curis\u00e9es", icon: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" },
-              { label: "Analyse IA", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
-            ].map((t, i) => (
-              <div key={i} className="flex items-center gap-2 text-sm text-brun/40">
-                <svg className="w-4 h-4 text-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={t.icon} />
-                </svg>
-                <span>{t.label}</span>
-              </div>
-            ))}
+            <EmailCaptureForm id="formulaire" />
           </div>
         </div>
       </section>
 
-      {/* Le probl&egrave;me — bold asymmetric */}
+      {/* BLOC 2 — Tu te sens bloqué·e ? */}
       <section className="py-24 bg-creme relative">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -118,95 +90,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Comprendre tes valeurs — modern accordion-style */}
+      {/* BLOC 3 — 3 étapes */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-sable-light via-sable-light to-creme" />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl sm:text-5xl font-bold text-brun mb-5">
-              Comprendre tes valeurs
-            </h2>
-            <p className="text-brun/50 text-lg max-w-lg mx-auto">
-              Tes valeurs ne sont pas ce que tu devrais valoriser.
-              Elles sont ce que tu vis d&eacute;j&agrave;.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {[
-              {
-                tag: "Concept cl\u00e9",
-                tagColor: "terracotta",
-                title: "Valeurs morales vs factuelles",
-                text: "Les valeurs morales viennent de l\u2019ext\u00e9rieur. Tes valeurs hautes factuelles se mesurent dans tes actions : o\u00f9 tu investis ton temps, ce que tu accumules, sur quoi tu d\u00e9penses ton argent.",
-              },
-              {
-                tag: "Le m\u00e9canisme",
-                tagColor: "sage",
-                title: "Qu\u2019est-ce qu\u2019un \u00ab\u2009vide\u2009\u00bb\u2009?",
-                text: "Ce qui te manquait le plus en grandissant s\u2019imprime dans ton syst\u00e8me de valeurs. Ce que tu n\u2019as pas eu, tu passes ta vie \u00e0 le poursuivre avec la plus grande intensit\u00e9.",
-              },
-              {
-                tag: "Important",
-                tagColor: "brun",
-                title: "Tes valeurs basses ne sont pas mauvaises",
-                text: "Quand tu te fixes un objectif align\u00e9 sur une valeur basse, tu procrastines. Quand tu alignes tes objectifs sur tes valeurs hautes, tu avances naturellement.",
-              },
-              {
-                tag: "Le d\u00e9clic",
-                tagColor: "terracotta",
-                title: "Pourquoi identifier tes valeurs\u2009?",
-                text: "La plupart des blocages viennent d\u2019un conflit entre deux valeurs hautes. Identifier ta hi\u00e9rarchie te permet de comprendre pourquoi tu fais ce que tu fais.",
-              },
-            ].map((card, i) => (
-              <div key={i} className="bg-white rounded-3xl p-7 border border-sable/40 hover-lift">
-                <span className={`inline-block text-xs font-semibold tracking-wide uppercase px-3 py-1 rounded-full mb-4 ${
-                  card.tagColor === "terracotta" ? "bg-terracotta/10 text-terracotta" :
-                  card.tagColor === "sage" ? "bg-sage/10 text-sage" :
-                  "bg-sable text-brun/60"
-                }`}>
-                  {card.tag}
-                </span>
-                <h3 className="font-serif text-xl font-bold text-brun mb-3">
-                  {card.title}
-                </h3>
-                <p className="text-brun/50 text-sm leading-relaxed">
-                  {card.text}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Comment &ccedil;a marche — horizontal timeline */}
-      <section id="comment-ca-marche" className="py-24 bg-creme">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-serif text-4xl sm:text-5xl font-bold text-brun mb-5">
               3 &eacute;tapes
             </h2>
-            <p className="text-brun/50 text-lg">
-              Un parcours guid&eacute; pour d&eacute;couvrir tes valeurs
-            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
                 step: "01",
-                title: "R\u00e9ponds",
-                desc: "57 questions pour explorer tes comportements r\u00e9els. Pas de bonnes ou mauvaises r\u00e9ponses.",
+                title: "T\u00e9l\u00e9charge",
+                desc: "Laisse ton mail et re\u00e7ois le PDF : 55 questions, les consignes, et le prompt IA pr\u00eat \u00e0 coller.",
               },
               {
                 step: "02",
-                title: "Regroupe",
-                desc: "Identifie les th\u00e8mes r\u00e9currents dans tes r\u00e9ponses. Nomme tes valeurs hautes.",
+                title: "R\u00e9ponds",
+                desc: "Prends 30 minutes au calme. R\u00e9ponds spontan\u00e9ment \u2014 la premi\u00e8re chose qui vient, sans corriger.",
               },
               {
                 step: "03",
                 title: "D\u00e9couvre",
-                desc: "L\u2019IA g\u00e9n\u00e8re ton profil personnalis\u00e9 : hi\u00e9rarchie, conflits identifi\u00e9s, liens avec tes vides.",
+                desc: "Colle tes r\u00e9ponses + le prompt dans ChatGPT (ou Gemini). L\u2019IA te renvoie tes valeurs hautes, tes conflits, et un regard sur tes projets.",
               },
             ].map((item, i) => (
               <div key={i} className="relative text-center">
@@ -222,235 +131,144 @@ export default function Home() {
               </div>
             ))}
           </div>
-
-          <div className="text-center mt-14">
-            <Link
-              href="/questionnaire"
-              className="inline-block btn-gradient px-10 py-5 rounded-full text-lg font-semibold"
-            >
-              Commencer le questionnaire
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* Aper&ccedil;u rapport — glass card with gradient */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-sable-light to-creme" />
-        <div className="absolute top-1/2 right-0 w-80 h-80 bg-terracotta/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* BLOC 4 — Ce que tu vas obtenir */}
+      <section className="py-24 bg-creme">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <h2 className="font-serif text-4xl sm:text-5xl font-bold text-brun mb-5">
-              Aper&ccedil;u de ton rapport
+              Ce que tu vas obtenir
             </h2>
-            <p className="text-brun/50 text-lg">
-              Voici ce que tu recevras
-            </p>
           </div>
 
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl border border-sable/40 overflow-hidden shadow-xl shadow-brun/5">
-            {/* Gratuit — 4/7 valeurs */}
-            <div className="p-7 sm:p-9 border-b border-sable/30">
-              <span className="inline-block text-xs font-semibold tracking-wide uppercase bg-sage/10 text-sage px-3 py-1.5 rounded-full mb-4">
-                4 / 7 valeurs hautes
-              </span>
-              <h3 className="font-serif text-2xl font-bold text-brun mb-2">
-                Ta hi&eacute;rarchie de valeurs
-              </h3>
-              <p className="text-sm text-brun/40 mb-6">
-                D&eacute;couvre tes 4 premi&egrave;res valeurs. Les 3 restantes dans le rapport complet.
-              </p>
-              <div className="space-y-4">
-                {MOCK_HIERARCHIE.map((v) => (
-                    <div key={v.rang} className="bg-creme/60 rounded-2xl p-4 sm:p-5 hover:bg-creme/90 transition-colors">
-                      <div className="flex items-start gap-4">
-                        <span
-                          className="w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold flex-shrink-0 border"
-                          style={{ color: COLORS[(v.rang - 1) % COLORS.length], borderColor: COLORS[(v.rang - 1) % COLORS.length] + "30", backgroundColor: COLORS[(v.rang - 1) % COLORS.length] + "12" }}
-                        >
-                          {v.rang}
-                        </span>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center justify-between gap-3 mb-1">
-                            <p className="font-semibold text-brun">{v.valeur}</p>
-                            <div className="flex items-center gap-2 flex-shrink-0">
-                              <span className="text-[10px] font-medium text-brun/30 uppercase tracking-wider hidden sm:inline">{v.domaine}</span>
-                              <span className="text-sm font-bold text-terracotta">{v.score}%</span>
-                            </div>
-                          </div>
-                          <div className="w-full bg-sable rounded-full h-2 mb-2">
-                            <div
-                              className="h-2 rounded-full"
-                              style={{
-                                width: `${v.score}%`,
-                                background: "linear-gradient(90deg, #F26522, #7C3AED)",
-                              }}
-                            />
-                          </div>
-                          {v.description && (
-                            <p className="text-xs text-brun/45 leading-relaxed">{v.description}</p>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                ))}
-              </div>
-              {/* Hint for remaining values */}
-              <div className="mt-5 flex items-center justify-center gap-2 text-brun/25">
-                <div className="flex -space-x-1">
-                  {[5, 6, 7].map((n) => (
-                    <span key={n} className="w-7 h-7 bg-sable border-2 border-white rounded-lg flex items-center justify-center text-[10px] font-bold text-brun/30">
-                      {n}
-                    </span>
-                  ))}
-                </div>
-                <span className="text-xs font-medium">+3 valeurs dans le rapport premium</span>
-              </div>
-            </div>
+          <ul className="space-y-4 text-brun/70 mb-12 max-w-xl mx-auto">
+            {[
+              "Tes 3 \u00e0 7 valeurs hautes class\u00e9es par ordre r\u00e9el d\u2019importance",
+              "Les conflits entre tes valeurs \u2014 pourquoi tu bloques",
+              "Ce que tes blocages prot\u00e8gent vraiment",
+              "Un regard clair sur tes projets en cours : OUI / PAS MAINTENANT / NON",
+            ].map((item, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <svg className="w-5 h-5 text-terracotta flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-sm leading-relaxed">{item}</span>
+              </li>
+            ))}
+          </ul>
 
-            {/* Premium teaser */}
-            <div className="p-7 sm:p-9 bg-brun-profond/[0.03]">
-              <span className="inline-block text-xs font-semibold tracking-wide uppercase bg-terracotta/10 text-terracotta px-3 py-1 rounded-full mb-4">
-                Rapport Premium &middot; 7 valeurs &middot; 7 domaines de vie
-              </span>
-              <h3 className="font-serif text-2xl font-bold text-brun mb-4">
-                Conflit de valeurs identifi&eacute;
-              </h3>
-              <div className="bg-white rounded-2xl p-6 border border-sable/30 shadow-sm">
-                <div className="flex items-center justify-center gap-4 mb-4">
-                  <span className="bg-brun-profond text-white px-5 py-2 rounded-full text-sm font-medium">
-                    Souverainet&eacute;
-                  </span>
-                  <span className="text-brun/20 text-lg font-light">&harr;</span>
-                  <span className="bg-sage text-white px-5 py-2 rounded-full text-sm font-medium">
-                    S&eacute;curit&eacute; relationnelle
-                  </span>
-                </div>
-                <p className="text-brun/40 text-sm text-center">
-                  &laquo;&thinsp;Ce n&apos;est pas un manque de courage.
-                  C&apos;est un conflit entre deux fid&eacute;lit&eacute;s.&thinsp;&raquo;
+          {/* Aperçu de 4 questions */}
+          <div className="bg-sable/40 rounded-2xl p-6 sm:p-8 border border-sable/30">
+            <p className="text-xs font-semibold tracking-widest uppercase text-terracotta mb-5">
+              Aper&ccedil;u du questionnaire
+            </p>
+            <div className="space-y-4">
+              {[
+                "Quand tu es libre, \u00e0 quoi vas-tu spontan\u00e9ment sans te forcer ?",
+                "Qu\u2019est-ce qui te met r\u00e9ellement en col\u00e8re, pas juste agac\u00e9\u00b7e ?",
+                "Quelle valeur est prot\u00e9g\u00e9e par le fait de ne pas bouger ?",
+                "Quel projet ou d\u00e9cision repousses-tu en ce moment ?",
+              ].map((q, i) => (
+                <p key={i} className="text-sm italic text-brun/60 leading-relaxed pl-4 border-l-2 border-terracotta/30">
+                  &laquo;&thinsp;{q}&thinsp;&raquo;
                 </p>
-                <p className="text-xs text-terracotta font-medium text-center mt-3">
-                  + 3 autres conflits identifi&eacute;s dans le rapport premium
-                </p>
-              </div>
+              ))}
             </div>
+            <p className="text-center text-sm text-brun/40 mt-6">
+              55 questions au total. Tu re&ccedil;ois tout par mail.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Gratuit vs Premium — modern pricing */}
-      <section id="gratuit-vs-premium" className="py-24 bg-creme">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+      {/* BLOC 5 — Verbatims */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-sable-light via-sable-light to-creme" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
             <h2 className="font-serif text-4xl sm:text-5xl font-bold text-brun mb-5">
-              Deux niveaux de profondeur
+              Ce que les gens disent apr&egrave;s l&apos;avoir fait
             </h2>
-            <p className="text-brun/50 text-lg">
-              Commence gratuitement. Va plus loin si tu veux.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Gratuit */}
-            <div className="bg-white rounded-3xl border border-sable/40 p-8 sm:p-10 hover-lift">
-              <span className="inline-block text-xs font-semibold tracking-wide uppercase bg-sage/10 text-sage px-3 py-1 rounded-full mb-5">
-                Gratuit
-              </span>
-              <h3 className="font-serif text-3xl font-bold text-brun">
-                R&eacute;sultats essentiels
-              </h3>
-              <p className="text-4xl font-bold text-brun mt-3 mb-8">
-                0&euro;
-              </p>
-              <ul className="space-y-3.5 text-sm text-brun/60">
-                {[
-                  "4 valeurs hautes identifi\u00e9es",
-                  "Mini-analyse IA personnalis\u00e9e",
-                  "Conflit principal de valeurs identifi\u00e9",
-                  "Lien vides et valeurs (version courte)",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-sage flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/questionnaire"
-                className="mt-10 block text-center btn-orange px-6 py-4 rounded-full font-medium"
-              >
-                Commencer gratuitement
-              </Link>
-            </div>
-
-            {/* Premium */}
-            <div className="relative bg-brun-profond rounded-3xl p-8 sm:p-10 text-white overflow-hidden glow-terracotta">
-              {/* Decorative */}
-              <div className="absolute -top-20 -right-20 w-48 h-48 bg-terracotta/15 rounded-full blur-2xl" />
-              <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-sage/10 rounded-full blur-2xl" />
-
-              <div className="relative">
-                <span className="inline-block text-xs font-semibold tracking-wide uppercase bg-terracotta/20 text-terracotta-light px-3 py-1 rounded-full mb-5">
-                  Premium
-                </span>
-                <h3 className="font-serif text-3xl font-bold">
-                  Rapport complet IA
-                </h3>
-                <p className="text-4xl font-bold mt-3 mb-8">
-                  29&thinsp;&euro;
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              "Ton questionnaire est profond, tu touches le noyau dur de notre personne mais aussi les angles morts.",
+              "Les questions sont puissantes, la v\u00e9rit\u00e9 m\u2019est apparue en mots sur le papier. \u00c7a pique, je sais o\u00f9 \u00e7a bloque maintenant.",
+              "\u00c7a m\u2019a permis de voir 2 valeurs hautes en conflit.",
+              "L\u2019exercice IA est bluffant.",
+              "Dingo la partie sur le conflit de valeurs. Vraiment.",
+              "L\u2019audio sur les valeurs m\u2019a boulevers\u00e9. Je me rends compte de leurs impacts et leurs importance dans ma vie.",
+            ].map((quote, i) => (
+              <div key={i} className="bg-white rounded-2xl p-6 border border-sable/40">
+                <span className="text-3xl text-terracotta/30 font-serif leading-none">&ldquo;</span>
+                <p className="text-sm italic text-brun/70 leading-relaxed mt-1">
+                  {quote}
                 </p>
-                <ul className="space-y-3.5 text-sm text-sable/70">
-                  {[
-                    "7 valeurs hautes dans les 7 domaines de vie",
-                    "TOUS tes conflits de valeurs d\u00e9taill\u00e9s",
-                    "Les 4 mani\u00e8res dont le ET devient possible",
-                    "Ce que tes blocages prot\u00e8gent",
-                    "Strat\u00e9gies inconscientes de ton cerveau",
-                    "Coh\u00e9rence mission / valeurs r\u00e9elles",
-                    "\u00c9clairage par ton profil cognitif (MBTI)",
-                    "Rapport PDF complet par email",
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-terracotta-light flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/questionnaire"
-                  className="mt-10 block text-center btn-gradient-premium px-6 py-4 rounded-full font-semibold"
-                >
-                  Commencer le questionnaire
-                </Link>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Citation de fermeture — dramatic */}
-      <section className="py-28 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-creme via-sable-light to-creme" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-terracotta/5 rounded-full blur-3xl" />
+      {/* BLOC 6 — 2ème formulaire */}
+      <section className="py-24 bg-creme">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-serif text-4xl sm:text-5xl font-bold text-brun mb-4">
+            Pr&ecirc;t&middot;e &agrave; d&eacute;couvrir tes valeurs&thinsp;?
+          </h2>
+          <p className="text-brun/50 text-lg mb-10">
+            Re&ccedil;ois l&apos;outil gratuitement par mail.
+          </p>
+          <EmailCaptureForm />
+        </div>
+      </section>
+
+      {/* BLOC 7 — Espace 7% */}
+      <section className="py-20 bg-brun-profond text-white relative overflow-hidden">
+        <div className="absolute -top-20 -right-20 w-48 h-48 bg-terracotta/10 rounded-full blur-3xl" />
+        <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-sage/10 rounded-full blur-2xl" />
 
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <blockquote className="font-serif text-3xl sm:text-4xl text-brun leading-snug mb-12">
-            &laquo;&thinsp;Quand tu alignes tes choix avec tes valeurs,
-            tu n&apos;as plus besoin de motivation.
-            Tu avances depuis l&apos;int&eacute;rieur.&thinsp;&raquo;
-          </blockquote>
-          <Link
-            href="/questionnaire"
-            className="inline-block btn-orange px-10 py-5 rounded-full text-lg font-semibold"
-          >
-            D&eacute;couvre tes valeurs
-          </Link>
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold mb-6">
+            Aller plus loin
+          </h2>
+          <p className="text-sable/60 leading-relaxed mb-4 max-w-xl mx-auto">
+            Ce PDF est issu de la Travers&eacute;e IA &mdash; Espace 7%.
+            Dans la plateforme, on travaille sur comment concilier tes valeurs quand elles entrent en conflit,
+            desserrer tes blocages et agir sans te trahir.
+          </p>
+          <p className="text-sable/40 text-sm mb-10 max-w-xl mx-auto">
+            C&apos;est un espace de r&eacute;gulation psychique guid&eacute;e.
+            Pas du coaching. Pas du dev perso.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://tally.so/r/Y5WyEB"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-orange px-8 py-4 rounded-full font-semibold"
+            >
+              Rejoindre la liste d&apos;attente
+            </a>
+          </div>
+
+          <div className="mt-10 pt-8 border-t border-white/10">
+            <p className="text-sable/40 text-sm mb-2">
+              Je partage chaque semaine sur les valeurs, les blocages et la r&eacute;gulation.
+            </p>
+            <a
+              href="https://jihaneherizi.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-terracotta-light hover:text-terracotta transition-colors"
+            >
+              Lire la newsletter &rarr;
+            </a>
+          </div>
         </div>
       </section>
 

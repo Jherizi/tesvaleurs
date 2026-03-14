@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Tes Valeurs | Avancer Sans Se Trahir",
+  title: "Identifie tes valeurs hautes — outil gratuit | tesvaleurs.fr",
   description:
-    "Identifie tes valeurs hautes avec un questionnaire interactif inspiré de la méthode Demartini. Rapport IA personnalisé.",
-  keywords: ["valeurs", "Demartini", "coaching", "développement personnel", "valeurs hautes"],
+    "55 questions pour découvrir ce qui organise vraiment ta vie. PDF + prompt IA. Gratuit.",
+  keywords: ["valeurs", "valeurs hautes", "outil gratuit", "questionnaire valeurs", "Demartini", "développement personnel"],
   openGraph: {
-    title: "Tes Valeurs | Avancer Sans Se Trahir",
+    title: "Identifie tes valeurs hautes — outil gratuit | tesvaleurs.fr",
     description:
-      "Découvre tes valeurs hautes et comprends ce qui te guide vraiment.",
+      "55 questions pour découvrir ce qui organise vraiment ta vie. PDF + prompt IA. Gratuit.",
     url: "https://tesvaleurs.fr",
     siteName: "Tes Valeurs",
     locale: "fr_FR",
