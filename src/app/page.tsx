@@ -187,7 +187,7 @@ export default function Home() {
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <p className="inline-block text-xs font-semibold tracking-widest uppercase text-terracotta bg-terracotta/10 px-4 py-1.5 rounded-full mb-6">
-              Testé par XXX+ personnes
+              Testé par 247+ personnes
             </p>
             <h2 className="font-serif text-4xl sm:text-5xl font-bold text-brun mb-5">
               Ce que les gens disent apr&egrave;s l&apos;avoir fait
