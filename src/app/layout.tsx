@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -6,6 +7,9 @@ export const metadata: Metadata = {
   description:
     "55 questions pour découvrir ce qui organise vraiment ta vie. PDF + prompt IA. Gratuit.",
   keywords: ["valeurs", "valeurs hautes", "outil gratuit", "questionnaire valeurs", "Demartini", "développement personnel"],
+  alternates: {
+    canonical: "https://tesvaleurs.fr/",
+  },
   openGraph: {
     title: "Identifie tes valeurs hautes — outil gratuit | tesvaleurs.fr",
     description:
@@ -14,8 +18,15 @@ export const metadata: Metadata = {
     siteName: "Tes Valeurs",
     locale: "fr_FR",
     type: "website",
+    images: [{ url: "https://tesvaleurs.fr/og-image.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["https://tesvaleurs.fr/og-image.png"],
   },
 };
+
+const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
 export default function RootLayout({
   children,
@@ -24,7 +35,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {children}
+        {gaId && (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="afterInteractive" />
+            <Script id="gtag-init" strategy="afterInteractive">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${gaId}');`}
+            </Script>
+          </>
+        )}
+      </body>
     </html>
   );
 }

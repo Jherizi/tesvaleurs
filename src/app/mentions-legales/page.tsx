@@ -79,7 +79,7 @@ export default function MentionsLegalesPage() {
               </p>
               <p className="mt-2">
                 <strong className="text-brun">Finalités :</strong> génération
-                de l&apos;analyse de valeurs (gratuite et premium), envoi des
+                de l&apos;analyse de valeurs, envoi des
                 résultats par email, communication commerciale si consentement.
               </p>
               <p className="mt-2">

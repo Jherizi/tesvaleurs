@@ -1,14 +1,12 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { useRouter } from "next/navigation";
 
 interface Props {
   id?: string;
 }
 
 export default function EmailCaptureForm({ id }: Props) {
-  const router = useRouter();
   const [prenom, setPrenom] = useState("");
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -26,11 +24,27 @@ export default function EmailCaptureForm({ id }: Props) {
       });
       if (!res.ok) throw new Error("Erreur");
       setStatus("sent");
-      router.push("/confirmation");
     } catch {
       setStatus("error");
     }
   };
+
+  if (status === "sent") {
+    return (
+      <div
+        id={id}
+        className="bg-white rounded-3xl border border-sable/40 p-7 sm:p-10 shadow-lg shadow-brun/5 text-center"
+      >
+        <p className="text-2xl mb-2">✓</p>
+        <p className="font-serif text-xl font-bold text-brun">
+          C&apos;est envoyé !
+        </p>
+        <p className="text-brun/60 mt-2">
+          Vérifie ta boîte mail.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <form
@@ -41,6 +55,7 @@ export default function EmailCaptureForm({ id }: Props) {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
         <input
           type="text"
+          name="PRENOM"
           value={prenom}
           onChange={(e) => setPrenom(e.target.value)}
           placeholder="Ton pr&eacute;nom"
@@ -49,6 +64,7 @@ export default function EmailCaptureForm({ id }: Props) {
         />
         <input
           type="email"
+          name="EMAIL"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Ton email"
@@ -65,11 +81,11 @@ export default function EmailCaptureForm({ id }: Props) {
       </button>
       {status === "error" && (
         <p className="text-red-500 text-xs text-center mt-2">
-          Une erreur est survenue. R&eacute;essaie.
+          Une erreur est survenue. Réessaie.
         </p>
       )}
       <p className="text-xs text-brun/40 text-center mt-3">
-        Gratuit. PDF + lien Google Doc envoy&eacute;s imm&eacute;diatement. Pas de spam.
+        Gratuit. PDF + lien Google Doc envoyés immédiatement. Pas de spam.
       </p>
     </form>
   );
