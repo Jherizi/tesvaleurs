@@ -24,8 +24,7 @@ export default function Home() {
           </h1>
 
           <p className="animate-fade-up text-lg sm:text-xl text-brun/60 max-w-xl mx-auto mb-10 leading-relaxed" style={{ animationDelay: "0.2s" }}>
-            Pour voir ce qui organise vraiment ta vie &mdash;
-            pas ce que tu aimerais, ce que tu fais d&eacute;j&agrave;.
+            Pas celles que tu affiches. Celles qui d&eacute;cident pour toi.
           </p>
 
           <div className="animate-fade-up" style={{ animationDelay: "0.3s" }}>
@@ -42,8 +41,7 @@ export default function Home() {
               Tu te sens bloqu&eacute;&middot;e&thinsp;?
             </h2>
             <p className="text-brun/50 text-lg max-w-lg mx-auto">
-              Ce n&apos;est pas un manque de motivation.
-              C&apos;est un conflit de valeurs.
+              30 minutes pour comprendre pourquoi tu bloques, h&eacute;sites ou repousses.
             </p>
           </div>
 
@@ -223,7 +221,7 @@ export default function Home() {
             Pr&ecirc;t&middot;e &agrave; d&eacute;couvrir tes valeurs&thinsp;?
           </h2>
           <p className="text-brun/50 text-lg mb-10">
-            Re&ccedil;ois l&apos;outil gratuitement par mail.
+            Tu sens que quelque chose bloque mais tu ne sais pas quoi. La r&eacute;ponse est dans tes valeurs.
           </p>
           <EmailCaptureForm id="formulaire-bas" />
         </div>
