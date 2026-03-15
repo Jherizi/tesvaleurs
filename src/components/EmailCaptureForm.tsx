@@ -8,19 +8,20 @@ interface Props {
 
 export default function EmailCaptureForm({ id }: Props) {
   const [prenom, setPrenom] = useState("");
+  const [nom, setNom] = useState("");
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!prenom.trim() || !email.trim()) return;
+    if (!prenom.trim() || !nom.trim() || !email.trim()) return;
 
     setStatus("sending");
     try {
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim(), prenom: prenom.trim() }),
+        body: JSON.stringify({ email: email.trim(), prenom: prenom.trim(), nom: nom.trim() }),
       });
       if (!res.ok) throw new Error("Erreur");
       setStatus("sent");
@@ -37,10 +38,10 @@ export default function EmailCaptureForm({ id }: Props) {
       >
         <p className="text-2xl mb-2">✓</p>
         <p className="font-serif text-xl font-bold text-brun">
-          C&apos;est envoyé !
+          C&apos;est envoyé.
         </p>
         <p className="text-brun/60 mt-2">
-          Vérifie ta boîte mail.
+          Vérifie ta boîte mail et tes spams.
         </p>
       </div>
     );
@@ -52,13 +53,22 @@ export default function EmailCaptureForm({ id }: Props) {
       onSubmit={handleSubmit}
       className="bg-white rounded-3xl border border-sable/40 p-7 sm:p-10 shadow-lg shadow-brun/5"
     >
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
         <input
           type="text"
           name="PRENOM"
           value={prenom}
           onChange={(e) => setPrenom(e.target.value)}
-          placeholder="Ton pr&eacute;nom"
+          placeholder="Pr&eacute;nom"
+          required
+          className="px-4 py-3.5 rounded-xl border border-sable bg-creme text-brun placeholder:text-brun/30"
+        />
+        <input
+          type="text"
+          name="NOM"
+          value={nom}
+          onChange={(e) => setNom(e.target.value)}
+          placeholder="Nom"
           required
           className="px-4 py-3.5 rounded-xl border border-sable bg-creme text-brun placeholder:text-brun/30"
         />
@@ -67,7 +77,7 @@ export default function EmailCaptureForm({ id }: Props) {
           name="EMAIL"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Ton email"
+          placeholder="Adresse mail"
           required
           className="px-4 py-3.5 rounded-xl border border-sable bg-creme text-brun placeholder:text-brun/30"
         />
@@ -85,7 +95,7 @@ export default function EmailCaptureForm({ id }: Props) {
         </p>
       )}
       <p className="text-xs text-brun/40 text-center mt-3">
-        Gratuit. PDF + lien Google Doc envoyés immédiatement. Pas de spam.
+        Gratuit. Tu reçois tout par mail.
       </p>
     </form>
   );

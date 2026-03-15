@@ -9,11 +9,11 @@ export async function POST(req: NextRequest) {
   }
 
   const apiKey = process.env.BREVO_API_KEY;
+  console.log("[Brevo] API key exists:", !!apiKey, "| List ID:", process.env.BREVO_LIST_ID || "9 (default)");
 
   if (!apiKey) {
-    // Fallback: log en dev si pas de clé API
-    console.log(`[DEV] Subscriber: ${prenom} ${nom} <${email}>`);
-    return NextResponse.json({ success: true });
+    console.warn("[Brevo] BREVO_API_KEY is missing! Contact NOT sent to Brevo.");
+    return NextResponse.json({ success: true, warning: "No API key configured" });
   }
 
   try {
@@ -32,9 +32,11 @@ export async function POST(req: NextRequest) {
       }),
     });
 
+    console.log("[Brevo] Response status:", res.status);
+
     if (!res.ok) {
       const err = await res.json();
-      console.error("[Brevo] Error:", err);
+      console.error("[Brevo] Error:", JSON.stringify(err));
       // duplicate_parameter = contact already exists, treat as success
       if (err.code === "duplicate_parameter") {
         return NextResponse.json({ success: true });
