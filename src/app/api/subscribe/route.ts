@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify({
         email,
         attributes: { PRENOM: prenom, NOM: nom },
-        listIds: [parseInt(process.env.BREVO_LIST_ID || "2", 10)],
+        listIds: [parseInt(process.env.BREVO_LIST_ID || "9", 10)],
         updateEnabled: true,
       }),
     });

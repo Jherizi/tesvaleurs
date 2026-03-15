@@ -17,23 +17,12 @@ export default function EmailCaptureForm({ id }: Props) {
 
     setStatus("sending");
     try {
-      const res = await fetch("https://api.brevo.com/v3/contacts", {
+      const res = await fetch("/api/subscribe", {
         method: "POST",
-        headers: {
-          "api-key": process.env.NEXT_PUBLIC_BREVO_API_KEY || "",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email.trim(),
-          attributes: { PRENOM: prenom.trim() },
-          listIds: [9],
-          updateEnabled: true,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim(), prenom: prenom.trim() }),
       });
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        if ((err as { code?: string }).code !== "duplicate_parameter") throw new Error("Erreur");
-      }
+      if (!res.ok) throw new Error("Erreur");
       setStatus("sent");
     } catch {
       setStatus("error");
